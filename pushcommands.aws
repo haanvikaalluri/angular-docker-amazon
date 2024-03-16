@@ -1,0 +1,5 @@
+aws ecr-public get-login-password --region us-east-1 | docker login --username AWS --password-stdin public.ecr.aws/s9i8j1s2
+
+docker build -t angular-docker-amazon-ecs .
+
+docker push public.ecr.aws/s9i8j1s2/angular-docker-amazon-ecs:latest
