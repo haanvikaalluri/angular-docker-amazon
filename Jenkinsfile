@@ -15,7 +15,7 @@ pipeline {
         stage('Build') { 
             steps { 
                 script{
-                 app = docker.build("263187097115.dkr.ecr.us-east-1.amazonaws.com/angular-docker-amzon-ecs")
+                 app = docker.build("263187097115.dkr.ecr.us-east-1.amazonaws.com/aws-docker-demo")
                 }
             }
         }
@@ -27,7 +27,7 @@ pipeline {
         stage('Deploy') {
             steps {
                 script{
-                       docker.withRegistry("https://263187097115.dkr.ecr.us-east-1.amazonaws.com/angular-docker-amzon-ecs", "ecr:us-east-1:AKIAT2RZMMYNZKNOUVOS") {
+                       docker.withRegistry("https://263187097115.dkr.ecr.us-east-1.amazonaws.com/aws-docker-demo", "ecr:us-east-1:AKIAT2RZMMYNVUMBAUJV") {
                         app.push("${env.BUILD_NUMBER}")
                         app.push("latest")
                     }
